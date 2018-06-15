@@ -11,3 +11,16 @@ function modificarvisi(numero, fechaing, motivo, placa, nombres, institucion) {
         document.getElementById('mmotivo_visi').value = motivo;
          
 }
+
+function modificarpracti(numero, fechaini, fechafin, nombres, nombrepro, semestre, institucion) {
+
+        document.getElementById('num_pract').value = numero;
+        document.getElementById('numero_pract').value = numero;
+        document.getElementById('mfechaini_pract').value = fechaini;
+        document.getElementById('mfechafin_pract').value = fechafin;
+        document.getElementById('mnombrepro_pract').value = nombrepro;
+        document.getElementById('mnombres_pract').value = nombres;
+        document.getElementById('minst_pract').value = institucion;
+        document.getElementById('msem_pract').value = semestre;
+         
+}

@@ -141,21 +141,7 @@
 		  		
 		  	</div>
 
-		  	<div class="row">
-		  		<div class="col-md-12 panel-warning">
-		  			<div class="content-box-header panel-heading">
-	  					<div class="panel-title ">Informes</div>
-						
-						<div class="panel-options">
-							<a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
-						</div>
-		  			</div>
-		  			<div class="content-box-large box-with-header">
-			  			Pellentesque luctus quam quis consequat vulputate. Sed sit amet diam ipsum. Praesent in pellentesque diam, sit amet dignissim erat. Aliquam erat volutpat. Aenean laoreet metus leo, laoreet feugiat enim suscipit quis. Praesent mauris mauris, ornare vitae tincidunt sed, hendrerit eget augue. Nam nec vestibulum nisi, eu dignissim nulla.
-						<br /><br />
-					</div>
-		  		</div>
-		  	</div>
+		  	
 
 		  </div>
 		  <div class="col-md-10" id="visi" style="display: none;">
@@ -259,7 +245,9 @@
 					                            <h4 class="modal-title">Visitante</h4>
 					                          </div>
 					                          <div class="modal-body form-group" >
-					                          	    Seleccione el DNI de la Persona: <select name="dni_persona" id="dni_persona" class="form-control">
+					                          	    Seleccione el DNI de la Persona: 
+					                          	    <div class="input-group">
+					                          	    <select name="dni_persona" id="dni_persona" class="form-control">
 							                            <?php 
 							                           
 							                          $consulta = "SELECT dni FROM persona";
@@ -276,8 +264,10 @@
 							                                } 
 							                            ?>  
 							                              </select>
-							                        
+							                        <div class="input-group-btn">
 							                        <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#myModalper">Registrar Persona</button>
+							                        </div>
+							                        </div>
 							                        <br>
 					                                Fecha de Ingreso: <input type="date" id="fecha_visi" name="fecha_visi" class="form-control" required="true">
 					                                Placa: <input type="text" id="placa_visi" name="placa_visi" class="form-control">
@@ -353,7 +343,7 @@
 		  				
 		  					<div class="row">
 		  						<div class="col-md-12 table-responsive">
-					            <button type="button" class="btn btn-default btn-md pull-right" data-toggle="modal" data-target="#myModalAgrevisi"><span class="glyphicon glyphicon-plus"></span>Agregar</button>
+					            <button type="button" class="btn btn-default btn-md pull-right" data-toggle="modal" data-target="#myModalAgrepract"><span class="glyphicon glyphicon-plus"></span>Agregar</button>
 					            <h2 class="sub-header">Listado de Practicantes</h2>
 					              <table class="table table-striped">
 					                <thead>
@@ -388,7 +378,7 @@
 					                  <td><?php echo $row['nombrepro']; $nombrepro = $row['nombrepro']; ?></td>
 					                  <td><?php echo $row['semestre']; $semestre = $row['semestre']; ?></td>
 					                  <td><?php echo $row['institucion']; $institucion = $row['institucion']; ?></td>
-					                  <td><button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModalvisi" onclick="modificarpracti('<?php echo $numero; ?>','<?php echo $fechaInicio; ?>','<?php echo $fechaFinal; ?>','<?php echo $nombres; ?>','<?php echo $nombrepro; ?>', '<?php echo $semestre; ?>','<?php echo $institucion; ?>');"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+					                  <td><button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModalpract" onclick="modificarpracti('<?php echo $numero; ?>','<?php echo $fechaInicio; ?>','<?php echo $fechaFinal; ?>','<?php echo $nombres; ?>','<?php echo $nombrepro; ?>', '<?php echo $semestre; ?>','<?php echo $institucion; ?>');"><span class="glyphicon glyphicon-eye-open"></span></button></td>
 					                  <!--<td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModaldelet" ng-click="selectemp(usuario)"><span class="glyphicon glyphicon-trash"></span></button></td>-->
 					                  
 					                </tr>
@@ -396,8 +386,8 @@
             				}
             					?>
 					              </table>
-					              <div id="myModalvisi" class="modal fade" role="dialog">
-					                    <form class="form-group" method="POST" action="modificarpracti.php">
+					              <div id="myModalpract" class="modal fade" role="dialog">
+					                    <form class="form-group" method="POST" action="">
 					                    <div class="modal-dialog">
 
 					                        <!-- Modal content-->
@@ -405,17 +395,21 @@
 
 					                          <div class="modal-header">
 					                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-					                            <h4 class="modal-title">Visitante</h4>
+					                            <h4 class="modal-title">Practicante</h4>
 					                          </div>
 					                          <div class="modal-body form-group" >
-					                                <input type="text" id="num_vis" name="num_vis" class="form-control" style="display: none;">
-					                                N°: <input type="text" id="numero_vis" name="numero_vis" class="form-control" disabled="true">
-					                                Fecha Ingreso: <input type="date" id="mfechaing_visi" name="fechaing_visi" class="form-control" required="true">
-					                                Placa: <input type="text" id="mplaca_visi" name="mplaca_visi" class="form-control">
-					                                Nombres: <input type="text" id="mnombres" name="mnombres" class="form-control" required="true" disabled="true">
-					                                Institucion: <input type="text" id="minst_visi" name="minst_visi" class="form-control" required="true">
-					                                Motivo: <textarea id="mmotivo_visi" name="mmotivo_visi" class="form-control" required="true"></textarea> 
-					                           
+					                                <input type="text" id="num_pract" name="num_pract" class="form-control" style="display: none;">
+					                                N°: <input type="text" id="numero_pract" name="numero_pract" class="form-control" disabled="true">
+					                                Fecha Inicio: <input type="date" id="mfechaini_pract" name="fechaing_visi" class="form-control" required="true">
+					                                Fecha Final: <input type="date" id="mfechafin_pract" name="fechaing_visi" class="form-control" required="true">
+					                                Nombres: <input type="text" id="mnombres_pract" name="mnombres_pract" class="form-control" required="true" disabled="true">
+					                                Nombre del Proyecto: <input type="text" id="mnombrepro_pract" name="mnombrepro_pract" class="form-control" required="true" disabled="true">
+					                                Semestre: <select type="number" id="msem_pract" name="msem_pract" class="form-control">
+					                                	<option value="1">Primer Semestre</option>
+	                    								<option value="2">Segundo Semestre</option>
+					                                </select>
+					                                Institucion: <input type="text" id="minst_pract" name="minst_pract" class="form-control" required="true">
+					                                				                           
 					                          </div>
 					                          <div class="modal-footer">
 					                            <button type="submit" class="btn btn-success" >Actualizar</button>
@@ -429,8 +423,8 @@
 					                    </div>
 
 
-					                    <div id="myModalAgrevisi" class="modal fade" role="dialog">
-					                    <form class="form-group" method="POST" action="registrarvisi.php">
+					                    <div id="myModalAgrepract" class="modal fade" role="dialog">
+					                    <form class="form-group" method="POST" action="registrarpracti.php">
 					                    <div class="modal-dialog">
 
 					                        <!-- Modal content-->
@@ -438,10 +432,13 @@
 
 					                          <div class="modal-header">
 					                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-					                            <h4 class="modal-title">Visitante</h4>
+					                            <h4 class="modal-title">Practicante</h4>
 					                          </div>
 					                          <div class="modal-body form-group" >
-					                          	    Seleccione el DNI de la Persona: <select name="dni_persona" id="dni_persona" class="form-control">
+					                          	
+					                          		Seleccione el DNI de la Persona:
+					                          		<div class="input-group">
+					                          		<select name="dni_persona_pract" id="dni_persona_pract" class="form-control">
 							                            <?php 
 							                           
 							                          $consulta = "SELECT dni FROM persona";
@@ -459,13 +456,47 @@
 							                            ?>  
 							                              </select>
 							                        
-							                        <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#myModalper">Registrar Persona</button>
-							                        <br>
-					                                Fecha de Ingreso: <input type="date" id="fecha_visi" name="fecha_visi" class="form-control" required="true">
-					                                Placa: <input type="text" id="placa_visi" name="placa_visi" class="form-control">
-					                                Institucion: <input id="inst_visi" name="inst_visi" class="form-control" required="true">
-					                                Motivo: <textarea type="text" id="motivo_visi" name="motivo_visi" class="form-control"></textarea>	
-					                                				                                
+							                        <div class="input-group-btn">
+							                        <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#myModalperpract">Registrar Persona</button>
+							                        </div>
+							                        </div>
+							                    	<br> 
+
+							                        Seleccione el Proyecto: 
+							                        <div class="input-group">
+							                        <select name="numero_proyecto" id="numero_proyecto" class="form-control">
+							                            <?php 
+							                           
+							                          $consulta = "SELECT numero,nombre FROM proyecto";
+
+							            					$con = new conexion;
+							            					$resultado = $con->consulta($consulta);
+
+							            					while ($row = $resultado->fetch_assoc()) {
+							            					
+							            					?>
+
+							                            <option value="<?php echo $row['numero']?>"> <?php echo $row['nombre'];?></option>
+							                            <?php    
+							                                } 
+							                            ?>  
+							                            </select>
+							                            
+							                            <div class="input-group-btn">
+							                            <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#myModalpropract">Registrar Proyecto</button>
+							                            </div>
+							                        </div>    
+							                        <br>						                        
+					                                Fecha de Inicio: <input type="date" id="fechaini_pract" name="fechaini_pract" class="form-control" required="true">
+					                                Fecha de Final: <input type="date" id="fechafin_pract" name="fechafin_pract" class="form-control" required="true">
+					                                
+					                                
+					                                Semestre: <select type="number" id="sem_pract" name="sem_pract" class="form-control">
+					                                	<option value="1">Primer Semestre</option>
+	                    								<option value="2">Segundo Semestre</option>
+					                                </select>
+					                                Institucion: <input type="text" id="inst_pract" name="inst_pract" class="form-control" required="true">
+					                                				                                				                                
 					                          </div>
 					                          <div class="modal-footer">
 					                            <button type="submit" class="btn btn-success" >Registrar</button>
@@ -478,11 +509,11 @@
 					                      </form>
 					                    </div>
 
-					                    <div id="myModalper" class="modal fade" role="dialog">
+					                    <div id="myModalperpract" class="modal fade" role="dialog">
 					                    <form class="form-group" method="POST" action="registrarpersona.php">
 					                    <div class="modal-dialog">
 
-					                        <!-- Modal content-->
+					                        <!-- Modal content -->
 					                        <div class="modal-content">
 
 					                          <div class="modal-header">
@@ -504,7 +535,7 @@
 
 					                      </div>
 					                      </form>
-					                    </div>
+					                    </div> 
 					          </div>
 		  					</div>
 		  					
@@ -519,6 +550,21 @@
 
 
 		  </div>
+		  <div class="row">
+		  		<div class="col-md-12 panel-warning">
+		  			<div class="content-box-header panel-heading">
+	  					<div class="panel-title ">Informes</div>
+						
+						<div class="panel-options">
+							<a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+						</div>
+		  			</div>
+		  			<div class="content-box-large box-with-header">
+			  			Pellentesque luctus quam quis consequat vulputate. Sed sit amet diam ipsum. Praesent in pellentesque diam, sit amet dignissim erat. Aliquam erat volutpat. Aenean laoreet metus leo, laoreet feugiat enim suscipit quis. Praesent mauris mauris, ornare vitae tincidunt sed, hendrerit eget augue. Nam nec vestibulum nisi, eu dignissim nulla.
+						<br /><br />
+					</div>
+		  		</div>
+		  	</div>
 		</div>
     </div>
 

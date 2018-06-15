@@ -1,7 +1,7 @@
 $(document).ready(function(){
             $('#dashboard').click(function() {
                 
-                 $('#dash').fadeIn(500) && $('#visi').fadeOut(300) && $('#practi').fadeIn(500) && $('#uni').fadeOut(300) && $('#ani').fadeOut(300) && $('#proyec').fadeOut(300);
+                 $('#dash').fadeIn(500) && $('#visi').fadeOut(300) && $('#practi').fadeOut(500) && $('#uni').fadeOut(300) && $('#ani').fadeOut(300) && $('#proyec').fadeOut(300);
             })
             $('#visitantes').click(function() {
                 
