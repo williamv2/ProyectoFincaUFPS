@@ -24,3 +24,14 @@ function modificarpracti(numero, fechaini, fechafin, nombres, nombrepro, semestr
         document.getElementById('msem_pract').value = semestre;
          
 }
+
+function modificaruni(codigo, nombre, numAnimales, descripcion, area) {
+
+        document.getElementById('cod_uni').value = codigo;
+        document.getElementById('codigo_uni').value = codigo;
+        document.getElementById('mnombres_uni').value = nombre;
+        document.getElementById('mnumani_uni').value = numAnimales;
+        document.getElementById('mdesc_uni').value = descripcion;
+        document.getElementById('marea_uni').value = area;
+                
+}

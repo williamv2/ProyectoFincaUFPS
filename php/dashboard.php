@@ -119,8 +119,10 @@
 		  				
 		  					<div class="row">
 		  						<div class="col-md-4">
-		  							Ut tristique adipiscing mauris, sit amet suscipit metus porta quis. Donec dictum tincidunt erat, eu blandit ligula. Nam sit amet dolor sapien. Quisque velit erat, congue sed suscipit vel, feugiat sit amet enim. Suspendisse interdum enim at mi tempor commodo. Sed tincidunt sed tortor eu scelerisque. Donec luctus malesuada vulputate. Nunc vel auctor metus, vel adipiscing odio. Aliquam aliquet rhoncus libero, at varius nisi pulvinar nec. Aliquam erat volutpat. Donec ut neque mi. Praesent enim nisl, bibendum vitae ante et, placerat pharetra magna. Donec facilisis nisl turpis, eget facilisis turpis semper non. Maecenas luctus ligula tincidunt iasdsd vitae ante et, 
-				  			<br /><br />
+		  							
+		  						
+		  						<br /><br />
+				  			
 		  						</div>
 		  						<div class="col-md-4">
 		  							Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque sed consectetur erat. Maecenas in elementum libero. Sed consequat pellentesque ultricies. Ut laoreet vehicula nisl sed placerat. Duis posuere lectus n, eros et hendrerit pellentesque, ante magna condimentum sapien, eget ultrices eros libero non orci. Etiam varius diam lectus.
@@ -214,10 +216,15 @@
 					                          <div class="modal-body form-group" >
 					                                <input type="text" id="num_vis" name="num_vis" class="form-control" style="display: none;">
 					                                N°: <input type="text" id="numero_vis" name="numero_vis" class="form-control" disabled="true">
-					                                Fecha Ingreso: <input type="date" id="mfechaing_visi" name="fechaing_visi" class="form-control" required="true">
+					                                <br>
+					                                Fecha Ingreso: <input type="date" id="mfechaing_visi" name="mfechaing_visi" class="form-control" required="true">
+					                                <br>
 					                                Placa: <input type="text" id="mplaca_visi" name="mplaca_visi" class="form-control">
+					                                <br>
 					                                Nombres: <input type="text" id="mnombres" name="mnombres" class="form-control" required="true" disabled="true">
+					                                <br>
 					                                Institucion: <input type="text" id="minst_visi" name="minst_visi" class="form-control" required="true">
+					                                <br>
 					                                Motivo: <textarea id="mmotivo_visi" name="mmotivo_visi" class="form-control" required="true"></textarea> 
 					                           
 					                          </div>
@@ -270,8 +277,11 @@
 							                        </div>
 							                        <br>
 					                                Fecha de Ingreso: <input type="date" id="fecha_visi" name="fecha_visi" class="form-control" required="true">
+					                                <br>
 					                                Placa: <input type="text" id="placa_visi" name="placa_visi" class="form-control">
+					                                <br>
 					                                Institucion: <input id="inst_visi" name="inst_visi" class="form-control" required="true">
+					                                <br>
 					                                Motivo: <textarea type="text" id="motivo_visi" name="motivo_visi" class="form-control"></textarea>	
 					                                				                                
 					                          </div>
@@ -300,7 +310,9 @@
 					                          <div class="modal-body form-group" >
 					                          	    
 					                                DNI: <input type="text" id="dni_per" name="dni_per" class="form-control" required="true">
+					                                <br>
 					                                Nombres: <input type="text" id="nombre_per" name="nombre_per" class="form-control" required="true">
+					                                <br>
 					                                Apellidos: <input type="text" id="apellido_per" name="apellido_per" class="form-control" required="true">
 					                          </div>
 					                          <div class="modal-footer">
@@ -387,7 +399,7 @@
             					?>
 					              </table>
 					              <div id="myModalpract" class="modal fade" role="dialog">
-					                    <form class="form-group" method="POST" action="">
+					                    <form class="form-group" method="POST" action="modificarpract.php">
 					                    <div class="modal-dialog">
 
 					                        <!-- Modal content-->
@@ -400,14 +412,20 @@
 					                          <div class="modal-body form-group" >
 					                                <input type="text" id="num_pract" name="num_pract" class="form-control" style="display: none;">
 					                                N°: <input type="text" id="numero_pract" name="numero_pract" class="form-control" disabled="true">
-					                                Fecha Inicio: <input type="date" id="mfechaini_pract" name="fechaing_visi" class="form-control" required="true">
-					                                Fecha Final: <input type="date" id="mfechafin_pract" name="fechaing_visi" class="form-control" required="true">
+					                                <br>
+					                                Fecha Inicio: <input type="date" id="mfechaini_pract" name="mfechaini_pract" class="form-control" required="true">
+					                                <br>
+					                                Fecha Final: <input type="date" id="mfechafin_pract" name="mfechafin_pract" class="form-control" required="true">
+					                                <br>
 					                                Nombres: <input type="text" id="mnombres_pract" name="mnombres_pract" class="form-control" required="true" disabled="true">
+					                                <br>
 					                                Nombre del Proyecto: <input type="text" id="mnombrepro_pract" name="mnombrepro_pract" class="form-control" required="true" disabled="true">
+					                                <br>
 					                                Semestre: <select type="number" id="msem_pract" name="msem_pract" class="form-control">
 					                                	<option value="1">Primer Semestre</option>
 	                    								<option value="2">Segundo Semestre</option>
 					                                </select>
+					                                <br>
 					                                Institucion: <input type="text" id="minst_pract" name="minst_pract" class="form-control" required="true">
 					                                				                           
 					                          </div>
@@ -424,7 +442,7 @@
 
 
 					                    <div id="myModalAgrepract" class="modal fade" role="dialog">
-					                    <form class="form-group" method="POST" action="registrarpracti.php">
+					                    <form class="form-group" method="POST" action="registrarpract.php">
 					                    <div class="modal-dialog">
 
 					                        <!-- Modal content-->
@@ -488,13 +506,14 @@
 							                        </div>    
 							                        <br>						                        
 					                                Fecha de Inicio: <input type="date" id="fechaini_pract" name="fechaini_pract" class="form-control" required="true">
+					                                <br>
 					                                Fecha de Final: <input type="date" id="fechafin_pract" name="fechafin_pract" class="form-control" required="true">
-					                                
-					                                
+					                                <br>					                                
 					                                Semestre: <select type="number" id="sem_pract" name="sem_pract" class="form-control">
 					                                	<option value="1">Primer Semestre</option>
 	                    								<option value="2">Segundo Semestre</option>
 					                                </select>
+					                                <br>
 					                                Institucion: <input type="text" id="inst_pract" name="inst_pract" class="form-control" required="true">
 					                                				                                				                                
 					                          </div>
@@ -523,7 +542,9 @@
 					                          <div class="modal-body form-group" >
 					                          	    
 					                                DNI: <input type="text" id="dni_per" name="dni_per" class="form-control" required="true">
+					                                <br>
 					                                Nombres: <input type="text" id="nombre_per" name="nombre_per" class="form-control" required="true">
+					                                <br>
 					                                Apellidos: <input type="text" id="apellido_per" name="apellido_per" class="form-control" required="true">
 					                          </div>
 					                          <div class="modal-footer">
@@ -536,7 +557,231 @@
 					                      </div>
 					                      </form>
 					                    </div> 
+
+					                    <div id="myModalpropract" class="modal fade" role="dialog">
+					                    <form class="form-group" method="POST" action="registrarproyecto.php">
+					                    <div class="modal-dialog">
+
+					                        <!-- Modal content -->
+					                        <div class="modal-content">
+
+					                          <div class="modal-header">
+					                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+					                            <h4 class="modal-title">Proyecto</h4>
+					                          </div>
+					                          <div class="modal-body form-group" >
+					                          	    
+					                                Numero de Proyecto: <input type="number" id="num_pro" name="num_pro" class="form-control" required="true">
+					                                <br>
+					                                Nombre: <input type="text" id="nombre_pro" name="nombre_pro" class="form-control" required="true">
+					                                <br>
+					                                Descripcion: <textarea  type="text" id="desc_pro" name="desc_pro" class="form-control" required="true"></textarea>
+					                                <br>
+					                                Seleccione el Unidad:
+					                                <select name="num_unidad" id="num_unidad" class="form-control">
+							                            <?php 
+							                           
+							                          $consulta = "SELECT codigo,descripcion FROM unidad";
+
+							            					$con = new conexion;
+							            					$resultado = $con->consulta($consulta);
+
+							            					while ($row = $resultado->fetch_assoc()) {
+							            					
+							            					?>
+
+							                            <option value="<?php echo $row['codigo']?>"> <?php echo $row['descripcion'];?></option>
+							                            <?php    
+							                                } 
+							                            ?>  
+							                            </select>
+
+					                          </div>
+					                          <div class="modal-footer">
+					                            <button type="submit" class="btn btn-success" >Registrar</button>
+					                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					                          </div>
+
+					                        </div>
+
+					                      </div>
+					                      </form>
+					                    </div> 
+
 					          </div>
+		  					</div>
+		  					
+				  			
+		  				
+		  				</div>
+		  			
+		  		</div>
+
+		  		
+		  	</div>
+
+
+		  </div>
+		  <div class="col-md-10" id="uni" style="display: none;">
+		  	<div class="row">
+		  		<div class="col-md-12">
+		  			<div class="content-box-header">
+		  				
+							<div class="panel-title"><i class="glyphicon glyphicon-list-alt"></i> Unidades</div>
+							
+							<div class="panel-options">
+								<a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+							</div>
+					</div>	
+						<div class="content-box-large box-with-header">
+		  				
+		  					<div class="row">
+		  						<div class="col-md-12 table-responsive">
+					            <button type="button" class="btn btn-default btn-md pull-right" data-toggle="modal" data-target="#myModalAgreuni"><span class="glyphicon glyphicon-plus"></span>Agregar</button>
+					            <h2 class="sub-header">Listado de Unidades</h2>
+					              <table class="table table-striped">
+					                <thead>
+					                  <tr>
+					                    <th>Codigo</th>
+					                    <th>Nombre</th>
+					                    <th>N° Animales</th>
+					                    <th>Descripcion</th>
+					                    <th>Area</th>
+					                    <th colspan="2">Operaciones</th>
+					                  </tr>
+					                </thead>
+					                <?php
+
+            					
+
+            					$consulta = "SELECT u.codigo,u.nombre,u.numAnimales,u.descripcion, u.codArea, a.descripcion AS area FROM unidad u INNER JOIN area a ON a.codigo=u.codArea ORDER BY u.codigo";
+
+            					$con = new conexion;
+            					$resultado = $con->consulta($consulta);
+
+            					while ($row = $resultado->fetch_assoc()) {
+            					
+            					?>
+					                <tr>
+					                  <td><?php echo $row['codigo']; $codigo = $row['codigo']; ?></td>
+					                  <td><?php echo $row['nombre']; $nombre = $row['nombre']; ?></td>
+					                  <td><?php echo $row['numAnimales']; $numAnimales = $row['numAnimales']; ?></td>
+					                  <td><?php echo $row['descripcion']; $descripcion = $row['descripcion']; ?></td>
+					                  <td><?php echo $row['area']; $area = $row['codArea']; ?></td>
+					                  <td><button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModaluni" onclick="modificaruni('<?php echo $codigo; ?>','<?php echo $nombre; ?>','<?php echo $numAnimales; ?>', '<?php echo $descripcion; ?>','<?php echo $area; ?>');"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+					                  <!--<td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModaldelet" ng-click="selectemp(usuario)"><span class="glyphicon glyphicon-trash"></span></button></td>-->
+					                  
+					                </tr>
+					                	<?php
+            				}
+            					?>
+					              </table>
+					              <div id="myModaluni" class="modal fade" role="dialog">
+					                    <form class="form-group" method="POST" action="modificaruni.php">
+					                    <div class="modal-dialog">
+
+					                        <!-- Modal content-->
+					                        <div class="modal-content">
+
+					                          <div class="modal-header">
+					                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+					                            <h4 class="modal-title">Unidad</h4>
+					                          </div>
+					                          <div class="modal-body form-group" >
+					                                <input type="text" id="cod_uni" name="cod_uni" class="form-control" style="display: none;">
+					                                Codigo: <input type="text" id="codigo_uni" name="codigo_uni" class="form-control" disabled="true">
+					                                <br>
+					                                Nombre: <input type="text" id="mnombres_uni" name="mnombres_uni" class="form-control" required="true">
+					                                <br>
+					                                N° Animales: <input type="number" id="mnumani_uni" name="mnumani_uni" class="form-control">
+					                                <br>
+					                                Descripcion: <textarea id="mdesc_uni" name="mdesc_uni" class="form-control" required="true"></textarea> 
+					                                <br>
+					                                Seleccione Area:
+					                                <select name="marea_uni" id="marea_uni" class="form-control">
+							                            <?php 
+							                           
+							                          $consulta = "SELECT codigo,descripcion FROM area";
+
+							            					$con = new conexion;
+							            					$resultado = $con->consulta($consulta);
+
+							            					while ($row = $resultado->fetch_assoc()) {
+							            					
+							            					?>
+
+							                            <option value="<?php echo $row['codigo']?>"> <?php echo $row['descripcion'];?></option>
+							                            <?php    
+							                                } 
+							                            ?>  
+							                              </select>
+					                           
+					                          </div>
+					                          <div class="modal-footer">
+					                            <button type="submit" class="btn btn-success" >Actualizar</button>
+					                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					                          </div>
+
+					                        </div>
+
+					                      </div>
+					                      </form>
+					                    </div>
+
+
+					                    <div id="myModalAgreuni" class="modal fade" role="dialog">
+					                    <form class="form-group" method="POST" action="registraruni.php">
+					                    <div class="modal-dialog">
+
+					                        <!-- Modal content-->
+					                        <div class="modal-content">
+
+					                          <div class="modal-header">
+					                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+					                            <h4 class="modal-title">Unidad</h4>
+					                          </div>
+					                          <div class="modal-body form-group" >
+					                                
+					                                Codigo: <input type="text" id="codigo_uni" name="codigo_uni" class="form-control">
+					                                <br>
+					                                Nombre: <input type="text" id="nombres_uni" name="nombres_uni" class="form-control" required="true">
+					                                <br>
+					                                N° Animales: <input type="number" id="numani_uni" name="numani_uni" class="form-control">
+					                                <br>
+					                                Descripcion: <textarea id="desc_uni" name="desc_uni" class="form-control" required="true"></textarea> 
+					                                <br>
+					                                Seleccione Area:
+					                                <select name="area_uni" id="area_uni" class="form-control">
+							                            <?php 
+							                           
+							                          $consulta = "SELECT codigo,descripcion FROM area";
+
+							            					$con = new conexion;
+							            					$resultado = $con->consulta($consulta);
+
+							            					while ($row = $resultado->fetch_assoc()) {
+							            					
+							            					?>
+
+							                            <option value="<?php echo $row['codigo']?>"> <?php echo $row['descripcion'];?></option>
+							                            <?php    
+							                                } 
+							                            ?>  
+							                              </select>
+					                           
+					                          </div>
+					                          <div class="modal-footer">
+					                            <button type="submit" class="btn btn-success" >Registrar</button>
+					                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					                          </div>
+
+					                        </div>
+
+					                      </div>
+					                      </form>
+					                    </div>
+
+					                </div>
 		  					</div>
 		  					
 				  			
