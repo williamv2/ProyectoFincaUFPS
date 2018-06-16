@@ -103,6 +103,7 @@
                     <li><a href="#" role="button" id="proyectos"><i class="glyphicon glyphicon-tasks"></i> Proyectos</a></li>
                 </ul>
              </div>
+
 		  </div>
 		  <div class="col-md-10" id="dash">
 		  	<div class="row">
@@ -146,7 +147,7 @@
 		  	
 
 		  </div>
-		  <div class="col-md-10" id="visi" style="display: none;">
+		  <div class="col-md-10" id="visi" style="display:none;">
 		  	<div class="row">
 		  		<div class="col-md-12">
 		  			<div class="content-box-header">
@@ -340,7 +341,7 @@
 
 		  </div>
 
-		  <div class="col-md-10" id="practi" style="display: none;">
+		  <div class="col-md-10" id="practi" style="display:none;">
 		  	<div class="row">
 		  		<div class="col-md-12">
 		  			<div class="content-box-header">
@@ -622,7 +623,7 @@
 
 
 		  </div>
-		  <div class="col-md-10" id="uni" style="display: none;">
+		  <div class="col-md-10" id="uni" style="display:none;">
 		  	<div class="row">
 		  		<div class="col-md-12">
 		  			<div class="content-box-header">
@@ -764,7 +765,7 @@
 							            					?>
 
 							                            <option value="<?php echo $row['codigo']?>"> <?php echo $row['descripcion'];?></option>
-							                            <?php    
+							                            <?php 
 							                                } 
 							                            ?>  
 							                              </select>
@@ -795,6 +796,432 @@
 
 
 		  </div>
+
+		  <div class="col-md-10" id="ani" style="display:none;">
+		  	<div class="row">
+		  		<div class="col-md-12">
+		  			<div class="content-box-header">
+		  				
+							<div class="panel-title"><i class="glyphicon glyphicon-home"></i> Animales</div>
+							
+							<div class="panel-options">
+								<a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+							</div>
+					</div>	
+						<div class="content-box-large box-with-header">
+		  				
+		  					<div class="row">
+		  						<div class="col-md-12 table-responsive">
+					            <button type="button" class="btn btn-default btn-md pull-right" data-toggle="modal" data-target="#myModalAgreani"><span class="glyphicon glyphicon-plus"></span>Agregar</button>
+					            <h2 class="sub-header">Listado de Animales</h2>
+					              <table class="table table-striped">
+					                <thead>
+					                  <tr>
+					                    <th>Codigo</th>
+					                    <th>Nombre</th>
+					                    <th>Descripcion</th>
+					                    <th>Fecha Ingreso</th>
+					                    <th>Fecha Terminal</th>
+					                    <th>Unidad</th>
+					                    <th>Genero</th>
+					                    <th>Tamaño</th>
+					                    <th>Especie</th>
+					                    <th>Cantidad Alimento</th>
+					                    <th colspan="2">Operaciones</th>
+					                  </tr>
+					                </thead>
+					                <?php
+
+            					
+
+            					$consulta = "SELECT a.codigo, a.nombre, a.descripcion, a.fechaIngreso, a.fechaterminal, u.codigo AS coduni, u.descripcion AS unidad, a.genero, a.tamano, a.especie, a.cantidadelimento FROM animal a INNER JOIN unidad u ON u.codigo= a.codUnidad";
+
+            					$con = new conexion;
+            					$resultado = $con->consulta($consulta);
+
+            					while ($row = $resultado->fetch_assoc()) {
+            					
+            					?>
+					                <tr>
+					                  <td><?php echo $row['codigo']; $codigo = $row['codigo']; ?></td>
+					                  <td><?php echo $row['nombre']; $nombre = $row['nombre']; ?></td>
+					                  <td><?php echo $row['descripcion']; $desc = $row['descripcion']; ?></td>
+					                  <td><?php echo $row['fechaIngreso']; $fechaing = $row['fechaIngreso']; ?></td>
+					                  <td><?php echo $row['fechaterminal']; $fechater = $row['fechaterminal']; ?></td>
+					                  <td><?php echo $row['unidad']; $unidad = $row['coduni']; ?></td>
+					                  <td><?php echo $row['genero']; $genero = $row['genero']; ?></td>
+					                  <td><?php echo $row['tamano']; $tama = $row['tamano']; ?></td>
+					                  <td><?php echo $row['especie']; $especie = $row['especie']; ?></td>
+					                  <td><?php echo $row['cantidadelimento']; $cantidadelimento = $row['cantidadelimento']; ?></td>
+					                  <td><button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModalani" onclick="modificarani('<?php echo $codigo; ?>','<?php echo $nombre; ?>','<?php echo $desc; ?>', '<?php echo $fechaing; ?>','<?php echo $fechater; ?>','<?php echo $unidad; ?>','<?php echo $genero; ?>','<?php echo $tama; ?>','<?php echo $especie; ?>','<?php echo $cantidadelimento; ?>');"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+					                  <!--<td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModaldelet" ng-click="selectemp(usuario)"><span class="glyphicon glyphicon-trash"></span></button></td>-->
+					                  
+					                </tr>
+					                	<?php
+            				}
+            					?>
+					              </table>
+					              <div id="myModalani" class="modal fade" role="dialog">
+					                    <form class="form-group" method="POST" action="modificarani.php">
+					                    <div class="modal-dialog">
+
+					                        <!-- Modal content-->
+					                        <div class="modal-content">
+
+					                          <div class="modal-header">
+					                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+					                            <h4 class="modal-title">Unidad</h4>
+					                          </div>
+					                          <div class="modal-body form-group" >
+					                                <input type="text" id="cod_ani" name="cod_ani" class="form-control" style="display: none;">
+					                                Codigo: <input type="text" id="codigo_ani" name="codigo_ani" class="form-control" disabled="true">
+					                                <br>
+					                                Nombre: <input type="text" id="mnombres_ani" name="mnombres_ani" class="form-control" required="true">
+					                                <br>
+					                                Descripcion: <textarea id="mdesc_ani" name="mdesc_ani" class="form-control" required="true"></textarea>
+					                                <br>
+					                                Fecha Ingreso: <input type="date" id="mfechaing_ani" name="mfechaing_ani" class="form-control" required="true">
+					                                <br>
+					                                Fecha Terminal: <input type="date" id="mfechater_ani" name="mfechater_ani" class="form-control" required="true">
+					                                <br>
+					                                 Seleccione Unidad:
+					                                <select name="muni_ani" id="muni_ani" class="form-control">
+							                            <?php 
+							                           
+							                          $consulta = "SELECT codigo,descripcion FROM unidad";
+
+							            					$con = new conexion;
+							            					$resultado = $con->consulta($consulta);
+
+							            					while ($row = $resultado->fetch_assoc()) {
+							            					
+							            					?>
+
+							                            <option value="<?php echo $row['codigo']?>"> <?php echo $row['descripcion'];?></option>
+							                            <?php    
+							                                } 
+							                            ?>  
+							                              </select>
+							                        <br>
+					                                Genero: <select id="mgenero_ani" name="mgenero_ani" class="form-control" required="true">
+					                                <option>M</option>
+					                                <option>F</option>
+					                                </select>
+					                                <br>
+					                                Tamaño: <select id="mtam_ani" name="mtam_ani" class="form-control" required="true">
+					                                <option>G</option>
+					                                <option>M</option>
+					                                <option>P</option>
+					                                </select>
+					                                <br>
+					                                Especie: <input type="text" name="mesp_ani" id="mesp_ani" class="form-control" required="true">
+					                                <br>
+					                                Cantidad Alimento: <input type="number" name="ali_ani" id="ali_ani" class="form-control" required="true">
+					                                					                                					                           
+					                          </div>
+					                          <div class="modal-footer">
+					                            <button type="submit" class="btn btn-success" >Actualizar</button>
+					                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					                          </div>
+
+					                        </div>
+
+					                      </div>
+					                      </form>
+					                    </div>
+
+
+					                    <div id="myModalAgreani" class="modal fade" role="dialog">
+					                    <form class="form-group" method="POST" action="registrarani.php">
+					                    <div class="modal-dialog">
+
+					                        <!-- Modal content-->
+					                        <div class="modal-content">
+
+					                          <div class="modal-header">
+					                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+					                            <h4 class="modal-title">Unidad</h4>
+					                          </div>
+					                          <div class="modal-body form-group" >
+					                                
+					                                Codigo: <input type="text" id="codigo_ani" name="codigo_ani" class="form-control" required="true">
+					                                <br>
+					                                Nombre: <input type="text" id="nombres_ani" name="nombres_ani" class="form-control" required="true">
+					                                <br>
+					                                Descripcion: <textarea id="desc_ani" name="desc_ani" class="form-control" required="true"></textarea>
+					                                <br>
+					                                Fecha Ingreso: <input type="date" id="fechaing_ani" name="fechaing_ani" class="form-control" required="true">
+					                                <br>
+					                                Fecha Terminal: <input type="date" id="fechater_ani" name="fechater_ani" class="form-control" required="true">
+					                                <br>
+					                                 Seleccione Unidad:
+					                                <select name="uni_ani" id="uni_ani" class="form-control">
+							                            <?php 
+							                           
+							                          $consulta = "SELECT codigo,descripcion FROM unidad";
+
+							            					$con = new conexion;
+							            					$resultado = $con->consulta($consulta);
+
+							            					while ($row = $resultado->fetch_assoc()) {
+							            					
+							            					?>
+
+							                            <option value="<?php echo $row['codigo']?>"> <?php echo $row['descripcion'];?></option>
+							                            <?php    
+							                                } 
+							                            ?>  
+							                              </select>
+							                        <br>
+					                                Genero: <select id="genero_ani" name="genero_ani" class="form-control" required="true">
+					                                <option>M</option>
+					                                <option>F</option>
+					                                </select>
+					                                <br>
+					                                Tamaño: <select id="tam_ani" name="tam_ani" class="form-control" required="true">
+					                                <option>G</option>
+					                                <option>M</option>
+					                                <option>P</option>
+					                                </select>
+					                                <br>
+					                                Especie: <input type="text" name="esp_ani" id="esp_ani" class="form-control" required="true">
+					                                <br>
+					                                Cantidad Alimento: <input type="number" name="ali_ani" id="ali_ani" class="form-control" required="true">
+					                                					                           
+					                          </div>
+					                          <div class="modal-footer">
+					                            <button type="submit" class="btn btn-success" >Registrar</button>
+					                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					                          </div>
+
+					                        </div>
+
+					                      </div>
+					                      </form>
+					                    </div>
+
+					                </div>
+		  					</div>
+		  					
+				  			
+		  				
+		  				</div>
+		  			
+		  		</div>
+
+		  		
+		  	</div>
+
+
+		  </div>
+
+		  <div class="col-md-10" id="proyec" style="display:none;">
+		  	<div class="row">
+		  		<div class="col-md-12">
+		  			<div class="content-box-header">
+		  				
+							<div class="panel-title"><i class="glyphicon glyphicon-home"></i> Proyectos</div>
+							
+							<div class="panel-options">
+								<a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+							</div>
+					</div>	
+						<div class="content-box-large box-with-header">
+		  				
+		  					<div class="row">
+		  						<div class="col-md-12 table-responsive">
+					            <button type="button" class="btn btn-default btn-md pull-right" data-toggle="modal" data-target="#myModalAgrepro"><span class="glyphicon glyphicon-plus"></span>Agregar</button>
+					            <h2 class="sub-header">Listado de Proyecto</h2>
+					              <table class="table table-striped">
+					                <thead>
+					                  <tr>
+					                    <th>Numero</th>
+					                    <th>Nombre</th>
+					                    <th>Descripcion</th>
+					                    <th>Unidad</th>
+					                    <th colspan="2">Operaciones</th>
+					                  </tr>
+					                </thead>
+					                <?php
+
+            					
+
+            					$consulta = "SELECT p.numero, p.descripcion, p.nombre, u.codigo, u.descripcion AS unidad FROM proyecto p INNER JOIN unidad u ON u.codigo=p.numeroUnidad";
+
+            					$con = new conexion;
+            					$resultado = $con->consulta($consulta);
+
+            					while ($row = $resultado->fetch_assoc()) {
+            					
+            					?>
+					                <tr>
+					                  <td><?php echo $row['numero']; $numero = $row['numero']; ?></td>
+					                  <td><?php echo $row['nombre']; $nombre = $row['nombre']; ?></td>
+					                  <td><?php echo $row['descripcion']; $descr = $row['descripcion']; ?></td>
+					                  <td><?php echo $row['unidad']; $unidad = $row['codigo']; ?></td>
+					                  <td><button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModalproye" onclick="modificarpro('<?php echo $numero; ?>','<?php echo $nombre; ?>','<?php echo $descr; ?>','<?php echo $unidad; ?>');"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+					                  <!--<td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModaldelet" ng-click="selectemp(usuario)"><span class="glyphicon glyphicon-trash"></span></button></td>-->
+					                  
+					                </tr>
+					                	<?php
+            				}
+            					?>
+					              </table>
+					              <div id="myModalani" class="modal fade" role="dialog">
+					                    <form class="form-group" method="POST" action="modificarpro.php">
+					                    <div class="modal-dialog">
+
+					                        <!-- Modal content-->
+					                        <div class="modal-content">
+
+					                          <div class="modal-header">
+					                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+					                            <h4 class="modal-title">Unidad</h4>
+					                          </div>
+					                          <div class="modal-body form-group" >
+					                                <input type="text" id="cod_ani" name="cod_ani" class="form-control" style="display: none;">
+					                                Codigo: <input type="text" id="codigo_ani" name="codigo_ani" class="form-control" disabled="true">
+					                                <br>
+					                                Nombre: <input type="text" id="mnombres_ani" name="mnombres_ani" class="form-control" required="true">
+					                                <br>
+					                                Descripcion: <textarea id="mdesc_ani" name="mdesc_ani" class="form-control" required="true"></textarea>
+					                                <br>
+					                                Fecha Ingreso: <input type="date" id="mfechaing_ani" name="mfechaing_ani" class="form-control" required="true">
+					                                <br>
+					                                Fecha Terminal: <input type="date" id="mfechater_ani" name="mfechater_ani" class="form-control" required="true">
+					                                <br>
+					                                 Seleccione Unidad:
+					                                <select name="muni_ani" id="muni_ani" class="form-control">
+							                            <?php 
+							                           
+							                          $consulta = "SELECT codigo,descripcion FROM unidad";
+
+							            					$con = new conexion;
+							            					$resultado = $con->consulta($consulta);
+
+							            					while ($row = $resultado->fetch_assoc()) {
+							            					
+							            					?>
+
+							                            <option value="<?php echo $row['codigo']?>"> <?php echo $row['descripcion'];?></option>
+							                            <?php    
+							                                } 
+							                            ?>  
+							                              </select>
+							                        <br>
+					                                Genero: <select id="mgenero_ani" name="mgenero_ani" class="form-control" required="true">
+					                                <option>M</option>
+					                                <option>F</option>
+					                                </select>
+					                                <br>
+					                                Tamaño: <select id="mtam_ani" name="mtam_ani" class="form-control" required="true">
+					                                <option>G</option>
+					                                <option>M</option>
+					                                <option>P</option>
+					                                </select>
+					                                <br>
+					                                Especie: <input type="text" name="mesp_ani" id="mesp_ani" class="form-control" required="true">
+					                                <br>
+					                                Cantidad Alimento: <input type="number" name="ali_ani" id="ali_ani" class="form-control" required="true">
+					                                					                                					                           
+					                          </div>
+					                          <div class="modal-footer">
+					                            <button type="submit" class="btn btn-success" >Actualizar</button>
+					                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					                          </div>
+
+					                        </div>
+
+					                      </div>
+					                      </form>
+					                    </div>
+
+
+					                    <div id="myModalAgreani" class="modal fade" role="dialog">
+					                    <form class="form-group" method="POST" action="registrarani.php">
+					                    <div class="modal-dialog">
+
+					                        <!-- Modal content-->
+					                        <div class="modal-content">
+
+					                          <div class="modal-header">
+					                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+					                            <h4 class="modal-title">Unidad</h4>
+					                          </div>
+					                          <div class="modal-body form-group" >
+					                                
+					                                Codigo: <input type="text" id="codigo_ani" name="codigo_ani" class="form-control" required="true">
+					                                <br>
+					                                Nombre: <input type="text" id="nombres_ani" name="nombres_ani" class="form-control" required="true">
+					                                <br>
+					                                Descripcion: <textarea id="desc_ani" name="desc_ani" class="form-control" required="true"></textarea>
+					                                <br>
+					                                Fecha Ingreso: <input type="date" id="fechaing_ani" name="fechaing_ani" class="form-control" required="true">
+					                                <br>
+					                                Fecha Terminal: <input type="date" id="fechater_ani" name="fechater_ani" class="form-control" required="true">
+					                                <br>
+					                                 Seleccione Unidad:
+					                                <select name="uni_ani" id="uni_ani" class="form-control">
+							                            <?php 
+							                           
+							                          $consulta = "SELECT codigo,descripcion FROM unidad";
+
+							            					$con = new conexion;
+							            					$resultado = $con->consulta($consulta);
+
+							            					while ($row = $resultado->fetch_assoc()) {
+							            					
+							            					?>
+
+							                            <option value="<?php echo $row['codigo']?>"> <?php echo $row['descripcion'];?></option>
+							                            <?php    
+							                                } 
+							                            ?>  
+							                              </select>
+							                        <br>
+					                                Genero: <select id="genero_ani" name="genero_ani" class="form-control" required="true">
+					                                <option>M</option>
+					                                <option>F</option>
+					                                </select>
+					                                <br>
+					                                Tamaño: <select id="tam_ani" name="tam_ani" class="form-control" required="true">
+					                                <option>G</option>
+					                                <option>M</option>
+					                                <option>P</option>
+					                                </select>
+					                                <br>
+					                                Especie: <input type="text" name="esp_ani" id="esp_ani" class="form-control" required="true">
+					                                <br>
+					                                Cantidad Alimento: <input type="number" name="ali_ani" id="ali_ani" class="form-control" required="true">
+					                                					                           
+					                          </div>
+					                          <div class="modal-footer">
+					                            <button type="submit" class="btn btn-success" >Registrar</button>
+					                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					                          </div>
+
+					                        </div>
+
+					                      </div>
+					                      </form>
+					                    </div>
+
+					                </div>
+		  					</div>
+		  					
+				  			
+		  				
+		  				</div>
+		  			
+		  		</div>
+
+		  		
+		  	</div>
+
+
+		  </div>
+
+		  
 		  <div class="row">
 		  		<div class="col-md-12 panel-warning">
 		  			<div class="content-box-header panel-heading">

@@ -35,3 +35,19 @@ function modificaruni(codigo, nombre, numAnimales, descripcion, area) {
         document.getElementById('marea_uni').value = area;
                 
 }
+
+function modificarani(codigo, nombre, desc, fechaing, fechater, unidad, genero, tama, especie, cantali) {
+
+        document.getElementById('cod_ani').value = codigo;
+        document.getElementById('codigo_ani').value = codigo;
+        document.getElementById('mnombres_ani').value = nombre;
+        document.getElementById('mdesc_ani').value = desc;
+        document.getElementById('mfechaing_ani').value = fechaing;
+        document.getElementById('mfechater_ani').value = fechater;
+        document.getElementById('muni_ani').value = unidad;
+        document.getElementById('mgenero_ani').value = genero;
+        document.getElementById('mtam_ani').value = tama;
+        document.getElementById('mesp_ani').value = especie;
+        document.getElementById('mali_ani').value = cantali;
+                
+}
