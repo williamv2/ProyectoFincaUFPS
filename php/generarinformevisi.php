@@ -47,7 +47,7 @@ $pdf->SetFont('Arial','B',15);
     // Movernos a la derecha
     $pdf->Cell(90);
     // Título
-    $pdf->Cell(100,10,'Informe Visitantes',1,0,'C');
+    $pdf->Cell(100,10,'Informe Visitas',1,0,'C');
     // Salto de línea
     $pdf->Ln(20);
 //Fields Name position
@@ -72,7 +72,7 @@ $pdf->Cell(20,6,'Placa',1,0,'L',1);
 $pdf->SetX(180);
 $pdf->Cell(80,6,'Nombres de los visitantes',1,0,'L',1);
 $pdf->SetX(260);
-$pdf->Cell(25,6,'Institucion',1,0,'L',1);
+$pdf->Cell(25,6,utf8_decode("Institución"),1,0,'L',1);
 $pdf->Ln();
 
 //Now show the 3 columns

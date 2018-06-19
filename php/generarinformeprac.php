@@ -77,7 +77,7 @@ $pdf->Cell(80,6,'Nombre del Proyecto',1,0,'L',1);
 $pdf->SetX(237);
 $pdf->Cell(23,6,'Semestre',1,0,'L',1);
 $pdf->SetX(260);
-$pdf->Cell(25,6,'Institucion',1,0,'L',1);
+$pdf->Cell(25,6,utf8_decode("Institución"),1,0,'L',1);
 $pdf->Ln();
 
 //Now show the 3 columns

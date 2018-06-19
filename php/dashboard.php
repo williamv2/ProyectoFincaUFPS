@@ -44,7 +44,7 @@
 	           <div class="col-md-5">
 	              <!-- Logo -->
 	              <div class="logo">
-	                 <h1><a href="../index.html"><span class="glyphicon glyphicon-leaf"></span> Granja San Pablo UFPS</a></h1>
+	                 <h1><a href="dashboard.php"><span class="glyphicon glyphicon-leaf"></span> Granja San Pablo UFPS</a></h1>
 	              </div>
 	           </div>
 	           <div class="col-md-5">
@@ -136,13 +136,36 @@
 		  						<br /><br />
 				  			
 		  						</div>
+		  						
 		  						<div class="col-md-4">
-		  							Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque sed consectetur erat. Maecenas in elementum libero. Sed consequat pellentesque ultricies. Ut laoreet vehicula nisl sed placerat. Duis posuere lectus n, eros et hendrerit pellentesque, ante magna condimentum sapien, eget ultrices eros libero non orci. Etiam varius diam lectus.
-							<br /><br />
+		  							<?php 
+		  							
+		  								$con = new conexion;
+		  								$consulta = "SELECT * FROM animal";
+		  								$number = $con->contador($consulta);
+
+		  							?>
+		  							<h1 style="text-align: center;"><strong style="color: #D90A1D;"><?php echo $number ?></strong></h1>
+						              <h4 style="text-align: center;">Animales</h4>
+						              <p class="text-muted" style="text-align: center;">Numero de Animales</p>
+		  						
+		  						<br /><br />
+				  			
 		  						</div>
 		  						<div class="col-md-4">
-		  							Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque sed consectetur erat. Maecenas in elementum libero. Sed consequat pellentesque ultricies. Ut laoreet vehicula nisl sed placerat. Duis posuere lectus n, eros et hendrerit pellentesque, ante magna condimentum sapien, eget ultrices eros libero non orci. Etiam varius diam lectus.
-							<br /><br />
+		  							<?php 
+		  							
+		  								$con = new conexion;
+		  								$consulta = "SELECT * FROM visitante";
+		  								$number = $con->contador($consulta);
+
+		  							?>
+		  							<h1 style="text-align: center;"><strong style="color: #D90A1D;"><?php echo $number ?></strong></h1>
+						              <h4 style="text-align: center;">Visitas</h4>
+						              <p class="text-muted" style="text-align: center;">Numero de Visitas</p>
+		  						
+		  						<br /><br />
+				  			
 		  						</div>
 		  					</div>
 		  					
@@ -1210,6 +1233,33 @@
 			  			<form class="form-group" method="POST" action="generarinformeprac.php">
 			  				<div class="input-group">
 			  					  <label class="form-control">Practicantes</label>
+			  				<div class="input-group-btn">
+			  					<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-download"></span> Generar</button>
+			  				</div>
+			  				</div>
+			  				
+			  			</form>
+			  			<form class="form-group" method="POST" action="generarinformeuni.php">
+			  				<div class="input-group">
+			  					  <label class="form-control">Unidades</label>
+			  				<div class="input-group-btn">
+			  					<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-download"></span> Generar</button>
+			  				</div>
+			  				</div>
+			  				
+			  			</form>
+			  			<form class="form-group" method="POST" action="generarinformeani.php">
+			  				<div class="input-group">
+			  					  <label class="form-control">Animales</label>
+			  				<div class="input-group-btn">
+			  					<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-download"></span> Generar</button>
+			  				</div>
+			  				</div>
+			  				
+			  			</form>
+			  			<form class="form-group" method="POST" action="generarinformepro.php">
+			  				<div class="input-group">
+			  					  <label class="form-control">Proyectos</label>
 			  				<div class="input-group-btn">
 			  					<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-download"></span> Generar</button>
 			  				</div>
