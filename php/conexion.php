@@ -88,5 +88,11 @@ class conexion{
 
 		return mysqli_query($this->conexion,$string);
 	}	
+
+	public function contador($string){
+
+		$result = mysqli_query($this->conexion,$string);
+		return mysqli_num_rows($result);
+	}
 }
 ?>

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
   <head>
     <title>Granja San Pablo UFPS</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+    <meta http-equiv="Content-Type" content="text/html"; charset="utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html"; charset="ISO-8859-1"/> 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
@@ -120,7 +121,17 @@
 		  				
 		  					<div class="row">
 		  						<div class="col-md-4">
-		  							
+		  							<?php 
+		  							include("conexion.php");
+
+		  								$con = new conexion;
+		  								$consulta = "SELECT * FROM unidad";
+		  								$number = $con->contador($consulta);
+
+		  							?>
+		  							<h1 style="text-align: center;"><strong style="color: #D90A1D;"><?php echo $number ?></strong></h1>
+						              <h4 style="text-align: center;">Unidades</h4>
+						              <p class="text-muted" style="text-align: center;">Numero de Unidades</p>
 		  						
 		  						<br /><br />
 				  			
@@ -178,13 +189,13 @@
 					                </thead>
 					                <?php
 
-            					include("conexion.php");
+            					
 
             					$consulta = "SELECT v.numero, v.fechaIngreso, v.motivo, v.placa, concat(p.nombres,' ',p.apellidos) AS nombres, v.institucion FROM visitante v INNER JOIN persona p ON p.dni=v.dni ORDER BY numero";
 
             					$con = new conexion;
             					$resultado = $con->consulta($consulta);
-
+            					
             					while ($row = $resultado->fetch_assoc()) {
             					
             					?>
@@ -1186,7 +1197,25 @@
 						</div>
 		  			</div>
 		  			<div class="content-box-large box-with-header">
-			  			Pellentesque luctus quam quis consequat vulputate. Sed sit amet diam ipsum. Praesent in pellentesque diam, sit amet dignissim erat. Aliquam erat volutpat. Aenean laoreet metus leo, laoreet feugiat enim suscipit quis. Praesent mauris mauris, ornare vitae tincidunt sed, hendrerit eget augue. Nam nec vestibulum nisi, eu dignissim nulla.
+			  			<form class="form-group" method="POST" action="generarinformevisi.php">
+			  				<h4>Generar Informe de:</h4>
+			  				<div class="input-group">
+			  					  <label class="form-control">Visitantes</label>
+			  				<div class="input-group-btn">
+			  					<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-download"></span> Generar</button>
+			  				</div>
+			  				</div>
+			  				
+			  			</form>
+			  			<form class="form-group" method="POST" action="generarinformeprac.php">
+			  				<div class="input-group">
+			  					  <label class="form-control">Practicantes</label>
+			  				<div class="input-group-btn">
+			  					<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-download"></span> Generar</button>
+			  				</div>
+			  				</div>
+			  				
+			  			</form>
 						<br /><br />
 					</div>
 		  		</div>

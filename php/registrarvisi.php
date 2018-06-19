@@ -15,17 +15,17 @@ $con = new conexion;
 
 $query = "INSERT INTO visitante( fechaIngreso, motivo, placa, dni, institucion) VALUES ('$fechaing','$motivo','$placa','$dni','$inst')";
 
-/*$verificar_nombre = $con->consulta("SELECT dni FROM persona WHERE dni= '$dni'");
+$verificar_nombre = $con->consulta("SELECT dni FROM practicante WHERE dni= '$dni'");
 
 	
 	if(mysqli_num_rows($verificar_nombre)> 0){
 
-		echo '<script>alert("la persona ya esta registrada");
+		echo '<script>alert("la persona ya esta como practicante");
 		window.history.go(-1);
 		</script>';
 		exit;
 	}
-*/
+
 //Ejecutar Consulta
 $resultado = $con->consulta($query);
 
