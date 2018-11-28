@@ -359,12 +359,23 @@ function AddPage($orientation='', $size='', $rotation=0)
 
 function Header()
 {
-	// To be implemented in your own inherited class
+	
 }
 
 function Footer()
 {
-	// To be implemented in your own inherited class
+	$this->SetY(-15);
+	// Arial italic 8
+	$this->SetFont('Arial','I',10);
+	/* Cell(ancho, alto, txt, border, ln, alineacion)
+	 * ancho=0, extiende el ancho de celda hasta el margen de la derecha
+	 * alto=10, altura de la celda a 10
+	 * txt= Texto a ser impreso dentro de la celda
+	 * border=T Pone margen en la posición Top (arriba) de la celda
+	 * ln=0 Indica dónde sigue el texto después de llamada a Cell(), en este caso con 0, enseguida de nuestro texto
+	 * alineación=C Texto alineado al centro
+	 */
+	$this->Cell(0,10,utf8_decode('Universidad Francisco de Paula Santader UFPS San Jose de Cúcuta-Colombia '.'Pagina: '.$this->PageNo()),'T',0,'C');
 }
 
 function PageNo()

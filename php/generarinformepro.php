@@ -1,7 +1,7 @@
 <?php
 
 require('./fpdf181/fpdf.php');
-
+$fecha = getdate();
 //Connect to your database
 include("conexion.php");
  
@@ -41,6 +41,7 @@ $pdf=new FPDF('L','mm','A4');
 $pdf->AddPage();
 $pdf->SetTitle("Proyectos");
 $pdf->SetFont('Arial','B',15);
+$pdf->Image("../img/logo_ufps.png",5,0,70,20);
     // Movernos a la derecha
     $pdf->Cell(90);
     // Título
@@ -75,17 +76,17 @@ $pdf->SetX(8);
 $pdf->MultiCell(20,6,$column_num,1);
 $pdf->SetY($Y_Table_Position);
 $pdf->SetX(28);
-$pdf->MultiCell(100,6,$column_desc,1);
+$pdf->MultiCell(100,6,utf8_decode($column_desc),1);
 $pdf->SetY($Y_Table_Position);
 $pdf->SetX(128);
-$pdf->MultiCell(100,6,$column_nom,1);
+$pdf->MultiCell(100,6,utf8_decode($column_nom),1);
 $pdf->SetY($Y_Table_Position);
 $pdf->SetX(228);
 $pdf->MultiCell(60,6,$column_uni,1);
 $pdf->SetY($Y_Table_Position);
 
 
-
+$pdf->Cell(280,-27,"Fecha: ".$fecha['mday']."/".$fecha['mon']."/".$fecha['year'],0,1,'R');
 
 $pdf->Output();
 

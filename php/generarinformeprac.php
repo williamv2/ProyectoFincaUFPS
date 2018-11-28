@@ -1,7 +1,7 @@
 <?php
 
 require('./fpdf181/fpdf.php');
-
+$fecha = getdate();
 //Connect to your database
 include("conexion.php");
  
@@ -47,6 +47,7 @@ $pdf=new FPDF('L','mm','A4');
 $pdf->AddPage();
 $pdf->SetTitle("Practicantes");
 $pdf->SetFont('Arial','B',15);
+$pdf->Image("../img/logo_ufps.png",5,0,70,20);
     // Movernos a la derecha
     $pdf->Cell(90);
     // Título
@@ -93,7 +94,7 @@ $pdf->SetX(52);
 $pdf->MultiCell(25,6,$column_fechfin,1);
 $pdf->SetY($Y_Table_Position);
 $pdf->SetX(77);
-$pdf->MultiCell(80,6,$column_nombres_prac,1);
+$pdf->MultiCell(80,6,utf8_decode($column_nombres_prac),1);
 $pdf->SetY($Y_Table_Position);
 $pdf->SetX(157);
 $pdf->MultiCell(80,6,$column_nompro,1);
@@ -102,10 +103,10 @@ $pdf->SetX(237);
 $pdf->MultiCell(23,6,$column_semestre,1);
 $pdf->SetY($Y_Table_Position);
 $pdf->SetX(260);
-$pdf->MultiCell(25,6,$column_inst,1);
+$pdf->MultiCell(25,6,utf8_decode($column_inst),1);
 $pdf->SetY($Y_Table_Position);
 
-
+$pdf->Cell(280,-27,"Fecha: ".$fecha['mday']."/".$fecha['mon']."/".$fecha['year'],0,1,'R');
 
 $pdf->Output();
 ?>

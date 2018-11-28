@@ -1,7 +1,7 @@
 <?php
 
 require('./fpdf181/fpdf.php');
-
+$fecha = getdate();
 //Connect to your database
 include("conexion.php");
  
@@ -54,6 +54,7 @@ $pdf=new FPDF('L','mm','A4');
 $pdf->AddPage();
 $pdf->SetTitle("Animales");
 $pdf->SetFont('Arial','B',15);
+$pdf->Image("../img/logo_ufps.png",5,0,70,20);
     // Movernos a la derecha
     $pdf->Cell(90);
     // Título
@@ -99,10 +100,10 @@ $pdf->SetX(8);
 $pdf->MultiCell(20,6,$column_cod,1);
 $pdf->SetY($Y_Table_Position);
 $pdf->SetX(28);
-$pdf->MultiCell(40,6,$column_nom,1);
+$pdf->MultiCell(40,6,utf8_decode($column_nom),1);
 $pdf->SetY($Y_Table_Position);
 $pdf->SetX(68);
-$pdf->MultiCell(55,6,$column_desc,1);
+$pdf->MultiCell(55,6,utf8_decode($column_desc),1);
 $pdf->SetY($Y_Table_Position);
 $pdf->SetX(123);
 $pdf->MultiCell(30,6,$column_feching,1);
@@ -117,13 +118,14 @@ $pdf->SetX(230);
 $pdf->MultiCell(18,6,$column_tam,1);
 $pdf->SetY($Y_Table_Position);
 $pdf->SetX(248);
-$pdf->MultiCell(25,6,$column_esp,1);
+$pdf->MultiCell(25,6,utf8_decode($column_esp),1);
 $pdf->SetY($Y_Table_Position);
 $pdf->SetX(273);
 $pdf->MultiCell(18,6,$column_cantali,1);
 $pdf->SetY($Y_Table_Position);
 
 
+$pdf->Cell(280,-27,"Fecha: ".$fecha['mday']."/".$fecha['mon']."/".$fecha['year'],0,1,'R');
 
 
 $pdf->Output();

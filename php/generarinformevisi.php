@@ -2,6 +2,9 @@
 
 require('./fpdf181/fpdf.php');
 
+$fecha = getdate();
+
+
 //Connect to your database
 include("conexion.php");
  
@@ -39,11 +42,15 @@ while($row = $result->fetch_assoc())
 }
 $con->cerrar();
 
+
 //Create a new PDF file
 $pdf=new FPDF('L','mm','A4');
 $pdf->AddPage();
 $pdf->SetTitle("Visitantes");
 $pdf->SetFont('Arial','B',15);
+$pdf->Image("../img/logo_ufps.png",5,0,70,20);
+
+
     // Movernos a la derecha
     $pdf->Cell(90);
     // Título
@@ -85,19 +92,19 @@ $pdf->SetX(28);
 $pdf->MultiCell(30,6,$column_fech,1);
 $pdf->SetY($Y_Table_Position);
 $pdf->SetX(58);
-$pdf->MultiCell(102,6,$column_motivo,1);
+$pdf->MultiCell(102,6,utf8_decode($column_motivo),1);
 $pdf->SetY($Y_Table_Position);
 $pdf->SetX(160);
 $pdf->MultiCell(20,6,$column_placa,1);
 $pdf->SetY($Y_Table_Position);
 $pdf->SetX(180);
-$pdf->MultiCell(80,6,$column_nombres,1);
+$pdf->MultiCell(80,6,utf8_decode($column_nombres),1);
 $pdf->SetY($Y_Table_Position);
 $pdf->SetX(260);
-$pdf->MultiCell(25,6,$column_inst,1);
+$pdf->MultiCell(25,6,utf8_decode($column_inst),1);
 $pdf->SetY($Y_Table_Position);
 
-
+$pdf->Cell(280,-27,"Fecha: ".$fecha['mday']."/".$fecha['mon']."/".$fecha['year'],0,1,'R');
 
 $pdf->Output();
 

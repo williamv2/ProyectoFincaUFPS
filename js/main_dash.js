@@ -1,26 +1,38 @@
 $(document).ready(function(){
             $('#dashboard').click(function() {
                 
-                 $('#dash').fadeIn(500) && $('#visi').fadeOut(300) && $('#practi').fadeOut(500) && $('#uni').fadeOut(300) && $('#ani').fadeOut(300) && $('#proyec').fadeOut(300);
+                 $('[title=dashboard]').fadeIn(500) && $('[title=visitante]').fadeOut(200) && $('[title=practicante]').fadeOut(200) && $('[title=unidad]').fadeOut(200) && $('[title=animal]').fadeOut(200) && $('[title=proyecto]').fadeOut(200) && $('[title=informe]').fadeOut(200) && $('[title=produccion]').fadeOut(200);
             })
             $('#visitantes').click(function() {
                 
-                 $('#visi').fadeIn(500) && $('#dash').fadeOut(300) && $('#practi').fadeOut(300) && $('#uni').fadeOut(300) && $('#ani').fadeOut(300) && $('#proyec').fadeOut(300);
+                 $('[title=visitante]').fadeIn(500) && $('[title=dashboard]').fadeOut(200) && $('[title=practicante]').fadeOut(200) && $('[title=unidad]').fadeOut(200) && $('[title=animal]').fadeOut(200) && $('[title=proyecto]').fadeOut(200) && $('[title=informe]').fadeOut(200) && $('[title=produccion]').fadeOut(200);
             })
             $('#practicantes').click(function() {
                 
-                 $('#practi').fadeIn(500) && $('#dash').fadeOut(300) && $('#visi').fadeOut(300)&& $('#uni').fadeOut(300) && $('#ani').fadeOut(300) && $('#proyec').fadeOut(300);
+                 $('[title=practicante]').fadeIn(500) && $('[title=dashboard]').fadeOut(200) && $('[title=visitante]').fadeOut(200)&& $('[title=unidad]').fadeOut(200) && $('[title=animal]').fadeOut(200) && $('[title=proyecto]').fadeOut(200) && $('[title=informe]').fadeOut(200) && $('[title=produccion]').fadeOut(200);
             })
             $('#unidades').click(function() {
                 
-                 $('#uni').fadeIn(500) && $('#dash').fadeOut(300) && $('#visi').fadeOut(300) && $('#practi').fadeOut(300) && $('#ani').fadeOut(300) && $('#proyec').fadeOut(300);
+                 $('[title=unidad]').fadeIn(500) && $('[title=dashboard]').fadeOut(200) && $('[title=visitante]').fadeOut(200) && $('[title=practicante]').fadeOut(200) && $('[title=animal]').fadeOut(200) && $('[title=proyecto]').fadeOut(200) && $('[title=informe]').fadeOut(200) && $('[title=produccion]').fadeOut(200);
             })
             $('#animales').click(function() {
                 
-                 $('#ani').fadeIn(500) && $('#dash').fadeOut(300) && $('#visi').fadeOut(300) && $('practi').fadeOut(300) && $('#uni').fadeOut(300) && $('#proyec').fadeOut(300);
+                 $('[title=animal]').fadeIn(500) && $('[title=dashboard]').fadeOut(200) && $('[title=visitante]').fadeOut(200) && $('[title=practicante]').fadeOut(200) && $('[title=unidad]').fadeOut(200) && $('[title=proyecto]').fadeOut(200) && $('[title=informe]').fadeOut(200) && $('[title=produccion]').fadeOut(200);
             })
             $('#proyectos').click(function() {
                 
-                 $('#proyec').fadeIn(500) && $('#dash').fadeOut(300) && $('#visi').fadeOut(300) && $('#practi').fadeOut(300) && $('#uni').fadeOut(300) && $('#ani').fadeOut(300);
+                 $('[title=proyecto]').fadeIn(500) && $('[title=dashboard]').fadeOut(200) && $('[title=visitante]').fadeOut(200) && $('[title=practicante]').fadeOut(200) && $('[title=unidad]').fadeOut(200) && $('[title=animal]').fadeOut(200) && $('[title=informe]').fadeOut(200) && $('[title=produccion]').fadeOut(200);
             })
-      })
+            $('#informes').click(function() {
+                
+                 $('[title=informe]').fadeIn(500) && $('[title=dashboard]').fadeOut(200) && $('[title=visitante]').fadeOut(200) && $('[title=practicante]').fadeOut(200) && $('[title=unidad]').fadeOut(200) && $('[title=animal]').fadeOut(200) && $('[title=proyecto]').fadeOut(200) && $('[title=produccion]').fadeOut(200);
+            })
+            $('#producciones').click(function() {
+                
+                 $('[title=produccion]').fadeIn(500) && $('[title=dashboard]').fadeOut(200) && $('[title=visitante]').fadeOut(200) && $('[title=practicante]').fadeOut(200) && $('[title=unidad]').fadeOut(200) && $('[title=animal]').fadeOut(200) && $('[title=proyecto]').fadeOut(200) && $('[title=informe]').fadeOut(200);
+            })
+      });
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
