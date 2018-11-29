@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-06-2018 a las 22:37:42
+-- Tiempo de generación: 29-11-2018 a las 03:44:32
 -- Versión del servidor: 10.1.32-MariaDB
 -- Versión de PHP: 7.2.5
 
@@ -31,15 +31,16 @@ SET time_zone = "+00:00";
 CREATE TABLE `admin` (
   `codigo` int(11) NOT NULL,
   `usuario` varchar(30) COLLATE utf8mb4_spanish2_ci NOT NULL,
-  `password` varchar(50) COLLATE utf8mb4_spanish2_ci NOT NULL
+  `password` varchar(50) COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `email` varchar(100) CHARACTER SET utf32 COLLATE utf32_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `admin`
 --
 
-INSERT INTO `admin` (`codigo`, `usuario`, `password`) VALUES
-(1, 'fincaufps', 'finca2018');
+INSERT INTO `admin` (`codigo`, `usuario`, `password`, `email`) VALUES
+(1, 'fincaufps', 'finca2018', 'williamhenryvv@ufps.edu.co');
 
 -- --------------------------------------------------------
 
@@ -105,6 +106,7 @@ CREATE TABLE `persona` (
 
 INSERT INTO `persona` (`dni`, `nombres`, `apellidos`) VALUES
 ('1090297638', 'Luis', 'Monsalve'),
+('10903797854', 'Miguel', 'gonzales'),
 ('1090468804', 'Manuel', 'Gallardo'),
 ('1090481701', 'Juan', 'Perez'),
 ('1090483707', 'William Henry', 'Velandia Velandia'),
@@ -142,12 +144,20 @@ INSERT INTO `practicante` (`numero`, `fechaInicio`, `fechaFinal`, `dni`, `numero
 
 CREATE TABLE `produccion` (
   `codigo` varchar(50) COLLATE utf8mb4_spanish2_ci NOT NULL,
-  `tipo` varchar(50) COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `descripcion` varchar(100) COLLATE utf8mb4_spanish2_ci NOT NULL,
   `cantidad` int(11) NOT NULL,
   `peso` varchar(50) COLLATE utf8mb4_spanish2_ci DEFAULT NULL,
   `fecha` date NOT NULL,
   `codUnidad` varchar(50) COLLATE utf8mb4_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `produccion`
+--
+
+INSERT INTO `produccion` (`codigo`, `descripcion`, `cantidad`, `peso`, `fecha`, `codUnidad`) VALUES
+('100', 'ProducciÃ³n de Carne', 10, '100', '2018-11-07', '201'),
+('101', 'ProducciÃ³n huevos', 100, '50', '2018-11-19', '204');
 
 -- --------------------------------------------------------
 
@@ -190,11 +200,11 @@ CREATE TABLE `unidad` (
 --
 
 INSERT INTO `unidad` (`codigo`, `nombre`, `numAnimales`, `descripcion`, `codArea`) VALUES
-('201', 'Vacunos', NULL, 'Unidad de Vacunos', '100'),
-('202', 'Cunicola', NULL, 'Unidad Cunicola', '100'),
-('203', 'Porcina', NULL, 'Unidad de Porcinos', '100'),
+('201', 'Vacunos', 30, 'Unidad de Vacunos', '100'),
+('202', 'Cunicola', 150, 'Unidad Cunicola', '100'),
+('203', 'Porcina', 10, 'Unidad de Porcinos', '100'),
 ('204', 'Gallinas', 117, 'Unidad de Gallinas Ponedoras', '100'),
-('205', 'Equinos', NULL, 'Unidad de Equinos', '100'),
+('205', 'Equinos', 6, 'Unidad de Equinos', '100'),
 ('206', 'Peces', 49, 'Unidad de Peces', '100');
 
 -- --------------------------------------------------------
@@ -217,9 +227,10 @@ CREATE TABLE `visitante` (
 --
 
 INSERT INTO `visitante` (`numero`, `fechaIngreso`, `motivo`, `placa`, `dni`, `institucion`) VALUES
-(1, '2018-04-05', 'Informacion sobre la Finca', 'ABG874', '1090487657', 'UFPS'),
+(1, '2018-04-05', 'InformaciÃ³n sobre la Finca San Pablo', 'ABG874', '1090487657', 'UFPS'),
 (2, '2018-06-05', 'Revisar unidad de peces', 'CUT749', '1090481701', 'UFPS'),
-(3, '2018-04-05', 'Recoleccion de Informacion', 'CRL380', '1090483707', 'UFPS');
+(3, '2018-04-05', 'Recoleccion de Informacion', 'CRL380', '1090483707', 'UFPS'),
+(4, '2018-06-20', 'Visita', '', '10903797854', 'UFPS');
 
 --
 -- Índices para tablas volcadas
@@ -229,7 +240,8 @@ INSERT INTO `visitante` (`numero`, `fechaIngreso`, `motivo`, `placa`, `dni`, `in
 -- Indices de la tabla `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`codigo`);
+  ADD PRIMARY KEY (`codigo`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Indices de la tabla `animal`
@@ -313,7 +325,7 @@ ALTER TABLE `practicante`
 -- AUTO_INCREMENT de la tabla `visitante`
 --
 ALTER TABLE `visitante`
-  MODIFY `numero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `numero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
