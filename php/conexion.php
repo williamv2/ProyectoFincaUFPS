@@ -67,7 +67,7 @@ class conexion{
 			$_SESSION['user']= $row['usuario'];
 			$_SESSION['pass']= $row['password'];
 
-			echo '<script>alert("Bienvenido Administrador")</script>';
+			
 			echo '<script>window.location="./dashboard.php";</script>';
 
 			

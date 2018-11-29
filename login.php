@@ -65,7 +65,7 @@
 				<div class="login-wrapper">
 			        <div class="box">
 			            <div class="content-wrap">
-			            	<form action="./php/login.php" method="POST">
+			            	<form action="./php/login.php" method="POST" onsubmit="return validarlogin();">
 			                <h6>Ingresar</h6>
                       <i class="fa fa-user-circle-o fa-5x" aria-hidden="true"></i>
                       <hr>
@@ -94,5 +94,6 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="js/custom.js"></script>
+    <script src="./js/main_dash.js"></script>
   </body>
 </html>

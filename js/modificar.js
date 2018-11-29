@@ -57,6 +57,18 @@ function modificarpro(numero, nombre, descripcion, unidad) {
         document.getElementById('numero_pro').value = numero;
         document.getElementById('mnombre_pro').value = nombre;
         document.getElementById('mdesc_pro').value = descripcion;
-        document.getElementById('mnum_unidad').value = unidad
+        document.getElementById('mnum_unidad').value = unidad;
+                
+}
+
+function modificarprod(codigo, descripcion, cantidad, peso, fecha, unidad) {
+
+        document.getElementById('cod_prod').value = codigo;
+        document.getElementById('codigo_prod').value = codigo;
+        document.getElementById('mdesc_prod').value = descripcion;
+        document.getElementById('mcant_prod').value = cantidad;
+        document.getElementById('mpeso_prod').value = peso;
+        document.getElementById('mfecha_prod').value = fecha;
+        document.getElementById('mnum_unidad').value = unidad;
                 
 }

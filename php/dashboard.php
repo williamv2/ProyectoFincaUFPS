@@ -28,6 +28,8 @@
     <!-- Custom styles for this template-->
     <link href="../bootstrap/dashboard/css/sb-admin.css" rel="stylesheet">
 
+    
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -238,9 +240,9 @@
           <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-chart-area"></i>
-              Producción</div>
+              Unidades</div>
             <div class="card-body">
-              <canvas id="myAreaChart" width="100%" height="30"></canvas>
+              <canvas id="mycanvas" width="100%" height="20"></canvas>
             </div>
             <div class="card-footer small text-muted">Actualización <?php setlocale(LC_ALL,"es_ES");
               echo strftime("%A %d de %B del %Y"); ?></div>
@@ -1489,6 +1491,15 @@
                 </div>
                 
               </form>
+              <form class="form-group" method="POST" action="generarinformeprod.php" target="_blank">
+                <div class="input-group">
+                    <label class="form-control">Producción</label>
+                <div class="input-group-btn">
+                  <button type="submit" class="btn btn-success"><span class="fa fa-cloud-download"></span> Generar</button>
+                </div>
+                </div>
+                
+              </form>
               
             </div>
             <div class="card-footer small text-muted">Actualización <?php setlocale(LC_ALL,"es_ES");
@@ -1529,9 +1540,173 @@
             <div class="card-header">
               <i class="fas fa-table"></i>
               Producciones
+              <button type="button" class="btn btn-default btn-md pull-right" data-toggle="modal" data-target="#myModalAgreprod"><span class="fa fa-plus"></span> Agregar</button>
             </div>
             <div class="card-body">
-              
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Código</th>
+                      <th>Descripción</th>
+                      <th>Cantidad</th>
+                      <th data-toggle="tooltip" title="Kg o L">Peso</th>
+                      <th>Fecha</th>
+                      <th>Unidad</th>
+                      <th colspan="2">Operaciones</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Código</th>
+                      <th>Descripción</th>
+                      <th>Cantidad</th>
+                      <th data-toggle="tooltip" title="Kg o L">Peso</th>
+                      <th>Fecha</th>
+                      <th>Unidad</th>
+                      <th colspan="2">Operaciones</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                    <?php
+
+                      
+
+                      $consulta = "SELECT p.codigo, p.descripcion, p.cantidad, p.peso, p.fecha, u.codigo AS coduni, u.descripcion AS unidad FROM produccion p INNER JOIN unidad u ON u.codigo= p.codUnidad";
+
+                      $con = new conexion;
+                      $resultado = $con->consulta($consulta);
+
+                      while ($row = $resultado->fetch_assoc()) {
+                      
+                      ?>
+                          <tr>
+                            <td><?php echo $row['codigo']; $codigo = $row['codigo']; ?></td>
+                            <td><?php echo $row['descripcion']; $desc = $row['descripcion']; ?></td>
+                            <td><?php echo $row['cantidad']; $cantidad = $row['cantidad']; ?></td>
+                            <td><?php echo $row['peso']; $peso = $row['peso']; ?></td>
+                            <td><?php echo $row['fecha']; $fecha = $row['fecha']; ?></td>
+                            <td><?php echo $row['unidad']; $unidad = $row['coduni']; ?></td>
+                            <td><button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModalprod" onclick="modificarprod('<?php echo $codigo; ?>','<?php echo $desc; ?>', '<?php echo $cantidad; ?>','<?php echo $peso; ?>','<?php echo $fecha; ?>','<?php echo $unidad; ?>');"><span class="fa fa-pencil-square-o"></span></button></td>
+                            
+                          </tr>
+                            <?php
+                    }
+                      ?>
+                    
+                  </tbody>
+                </table>
+
+                <!-- Modprod Modal-->
+                  <div class="modal fade" id="myModalprod" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Editar Producción</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <form method="POST" action="./modificarprod.php">
+                            <div class="form-group">
+                              <input type="text" id="cod_prod" name="cod_prod" class="form-control" style="display: none;">
+                              Codigo: <input type="text" id="codigo_prod" name="codigo_prod" class="form-control" disabled="true">
+                              <br>
+                              Descripcion: <textarea id="mdesc_prod" name="mdesc_prod" class="form-control" required="true"></textarea>
+                              <br>
+                              Cantidad: <input type="number" name="mcant_prod" id="mcant_prod" class="form-control" required="true">
+                              <br>
+                              Peso: <input type="number" name="mpeso_prod" id="mpeso_prod" class="form-control" placeholder="Kg">
+                              <br>
+                              Fecha: <input type="date" id="mfecha_prod" name="mfecha_prod" class="form-control" required="true" min="2018-01-01">
+                              <br>
+                               Seleccione Unidad:
+                              <select name="muni_prod" id="muni_prod" class="form-control">
+                              <?php 
+                             
+                            $consulta = "SELECT codigo,descripcion FROM unidad";
+
+                        $con = new conexion;
+                        $resultado = $con->consulta($consulta);
+
+                        while ($row = $resultado->fetch_assoc()) {
+                        
+                        ?>
+
+                              <option value="<?php echo $row['codigo']?>"> <?php echo $row['descripcion'];?></option>
+                              <?php    
+                                  } 
+                              ?>  
+                                </select>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                              <button type="submit" class="btn btn-success">Actualizar</button>
+                            </div>
+                          </form>
+                        </div>
+                        
+                        </div>
+                      </div>
+                  </div>
+
+
+                <!-- Agreprod Modal-->
+                  <div class="modal fade" id="myModalAgreprod" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Agregar Producción</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <form method="POST" action="./registrarprod.php">
+                            <div class="form-group">
+                              Codigo: <input type="text" id="codigo_prod" name="codigo_prod" class="form-control" required="true">
+                              <br>
+                              Descripcion: <textarea id="desc_prod" name="desc_prod" class="form-control" required="true"></textarea>
+                              <br>
+                              Cantidad: <input type="number" name="cant_prod" id="cant_prod" class="form-control" required="true">
+                              <br>
+                              Peso: <input type="number" name="peso_prod" id="peso_prod" class="form-control" placeholder="Kg">
+                              <br>
+                              Fecha: <input type="date" id="fecha_prod" name="fecha_prod" class="form-control" required="true" min="2018-01-01">
+                              <br>
+                               Seleccione Unidad:
+                              <select name="uni_prod" id="uni_prod" class="form-control">
+                              <?php 
+                             
+                            $consulta = "SELECT codigo,descripcion FROM unidad";
+
+                        $con = new conexion;
+                        $resultado = $con->consulta($consulta);
+
+                        while ($row = $resultado->fetch_assoc()) {
+                        
+                        ?>
+
+                              <option value="<?php echo $row['codigo']?>"> <?php echo $row['descripcion'];?></option>
+                              <?php    
+                                  } 
+                              ?>  
+                                </select>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                              <button type="submit" class="btn btn-success">Registrar</button>
+                            </div>
+                          </form>
+                        </div>
+                        
+                        </div>
+                      </div>
+                  </div>
+
+
+              </div>
             </div>
             <div class="card-footer small text-muted">Actualización <?php setlocale(LC_ALL,"es_ES");
               echo strftime("%A %d de %B del %Y"); ?></div>
@@ -1587,17 +1762,21 @@
 
     <!-- Page level plugin JavaScript-->
     <script src="../bootstrap/dashboard/vendor/chart.js/Chart.min.js"></script>
-    <script src="../bootstrap/dashboard/vendor/datatables/jquery.dataTables.js"></script>
-    <script src="../bootstrap/dashboard/vendor/datatables/dataTables.bootstrap4.js"></script>
+    
+    <!--<script src="../bootstrap/dashboard/vendor/datatables/dataTables.bootstrap4.js"></script>-->
 
     <!-- Custom scripts for all pages-->
     <script src="../bootstrap/dashboard/js/sb-admin.min.js"></script>
     <script src="../js/main_dash.js"></script>
     <script src="../js/modificar.js"></script>
+    <script src="../js/chartdash.js"></script>
+
+    
+
 
     <!-- Demo scripts for this page-->
-    <!--<script src="../bootstrap/dashboard/js/demo/datatables-demo.js"></script>-->
-    <script src="../bootstrap/dashboard/js/demo/chart-area-demo.js"></script>
+    <!--<script src="../bootstrap/dashboard/js/demo/datatables-demo.js"></script>
+    <script src="../bootstrap/dashboard/js/demo/chart-area-demo.js"></script>-->
 
   </body>
 
