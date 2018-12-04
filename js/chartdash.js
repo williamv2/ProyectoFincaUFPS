@@ -8,7 +8,7 @@ $(document).ready(function(){
 			var numanimal = [];
 
 			for(var i in data) {
-				nombre.push("Nombre: " + data[i].nombre);
+				nombre.push(data[i].nombre);
 				numanimal.push(data[i].numAnimales);
 			}
 

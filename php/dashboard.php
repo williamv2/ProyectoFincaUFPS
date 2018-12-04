@@ -61,7 +61,7 @@
       ?>
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top" style="background-color: #D90A1D !important">
 
-      <a class="navbar-brand mr-1" href="dashboard2.php"><i class="fa fa-leaf" aria-hidden="true"></i></span> Granja San Pablo UFPS</a>
+      <a class="navbar-brand mr-1" href="dashboard.php"><i class="fa fa-leaf" aria-hidden="true"></i></span> Granja San Pablo UFPS</a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>

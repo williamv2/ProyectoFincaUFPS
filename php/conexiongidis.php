@@ -5,7 +5,7 @@ class conexion{
 	private $conexion;
 	private $host_db = "gidis.ufps.edu.co";
 	private $user_db = "fincaufps";
-	private $pass_db = "finca2018";
+	private $pass_db = "fincaufps";
 	private $db_master = "fincaufps";
 	private $tbl_name = "admin";
 	private $usuario;
